@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Container,Button,Box,Typography,TextField,FormControl,InputLabel,Select,MenuItem}from '@mui/material'; 
+import {Container,Button,Box,Typography,TextField}from '@mui/material'; 
 import AddIcon from '@mui/icons-material/Add';
 import Tab from '@mui/material/Tab';
 import TabContext from '@mui/lab/TabContext';
@@ -7,10 +7,10 @@ import TabList from '@mui/lab/TabList';
 import TabPanel from '@mui/lab/TabPanel';
 import  Cards  from './Cards';
 import Modal from '@mui/material/Modal';
-import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
-import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
-import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
-import { DatePicker } from '@mui/x-date-pickers/DatePicker';
+// import { DemoContainer } from '@mui/x-date-pickers/internals/demo';
+// import { AdapterDayjs } from '@mui/x-date-pickers/AdapterDayjs';
+// import { LocalizationProvider } from '@mui/x-date-pickers/LocalizationProvider';
+// import { DatePicker } from '@mui/x-date-pickers/DatePicker';
 import { useDispatch, useSelector } from 'react-redux';
 import { addTodo } from '../Reducers/todoReducer';
 // import { Link, useNavigate } from 'react-router-dom';
@@ -42,10 +42,10 @@ function Main() {
   //   console.log(date);
   // }
   const [value, setValue] = React.useState('1');
-  const [age, setAge] = React.useState('');
-  const handleChangeOptions = (event) => {
-    setAge(event.target.value);
-  };
+  // const [age, setAge] = React.useState('');
+  // const handleChangeOptions = (event) => {
+  //   setAge(event.target.value);
+  // };
   const handleChange = (event, newValue) => {
     setValue(newValue);
   };
@@ -64,7 +64,7 @@ function Main() {
   }
   const countTodos=todo.filter(i=>i).length;
 
-  const [mark,setMark]=React.useState(false);
+  // const [mark,setMark]=React.useState(false);
   const ismarked=useSelector((state)=>state.todo);
   console.log("MARKED OR NOT::",ismarked)
   return (
@@ -84,9 +84,8 @@ function Main() {
         </Box>
       {/* contents here */}
       {todo.map((t,index)=>{
-      if(true){
          return <TabPanel value="1"> <Cards  sx={{marginBottom:"2rem"}} key={index} tid={t.id} ttitle={t.title} tdesc={t.desc} tdate={t.date} tcat={t.cat}/></TabPanel>
-      }
+    
       
     }
       )}

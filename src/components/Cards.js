@@ -1,5 +1,5 @@
 
-import { Box,Card,CardContent,Typography,Button,TextField} from '@mui/material';
+import { Box,CardContent,Typography,Button,TextField} from '@mui/material';
 import React from 'react';
 import ReadMoreReact from 'read-more-react';
 import Chip from '@mui/material/Chip';
@@ -7,10 +7,8 @@ import Stack from '@mui/material/Stack';
 import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import { useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
 import { useDispatch} from 'react-redux';
 import { deleteTodo,updateTodo } from '../Reducers/todoReducer';
-import EditCards from './EditCards'
 import Modal from '@mui/material/Modal';
 const style = {
   position: 'absolute',
@@ -29,7 +27,7 @@ const Cards = ({tid,ttitle,tdesc,tdate,tcat}) => {
   // console.log('CARD WALA CONSOLELOG'+users);
   // const [edit,setEdit]=React.useState(false);
   const [open, setOpen] = React.useState(false);
-  const handleOpen = () => setOpen(true);
+  // const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
 
   const minimumLength=80;
@@ -43,14 +41,14 @@ const Cards = ({tid,ttitle,tdesc,tdate,tcat}) => {
   }
   
 
-  const [value, setValue] = React.useState('1');
-  const [age, setAge] = React.useState('');
-  const handleChangeOptions = (event) => {
-    setAge(event.target.value);
-  };
-  const handleChange = (event, newValue) => {
-    setValue(newValue);
-  };
+  // const [value, setValue] = React.useState('1');
+  // const [age, setAge] = React.useState('');
+  // const handleChangeOptions = (event) => {
+  //   setAge(event.target.value);
+  // };
+  // const handleChange = (event, newValue) => {
+  //   setValue(newValue);
+  // };
   const existingTodo=todos.filter(f=>f.id===tid);
   const {title,desc,date,cat}=existingTodo[0];
 

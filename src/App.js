@@ -3,7 +3,7 @@ import { styled} from '@mui/material/styles';
 import {CssBaseline,Box,Container} from '@mui/material';
 import Main from './components/Main'
 import Header from './components/Header';
-import { BrowserRouter,Routes,Route,Link, useNavigate } from 'react-router-dom';
+import {Routes,Route, useNavigate } from 'react-router-dom';
 import EditCards from './components/EditCards';
 import Form from './components/Form'
 import Signup from './components/Signup'
@@ -12,6 +12,7 @@ import { loginUser,setLoading } from './Reducers/authReducer';
 import { auth } from "./firebase";
 import Landing from './components/LandingPage';
 import Overview from './components/Overview';
+import { useEffect } from 'react';
 
 const DrawerHeader = styled('div')(({ theme }) => ({
   display: 'flex',
@@ -27,10 +28,12 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 
 
 export default function App() {
+  const user = useSelector((state) => state.auth);
+
   const navigate=useNavigate();
   const dispatch = useDispatch();
-
-  React.useEffect(() => {
+  useEffect(() => {
+   
     auth.onAuthStateChanged((authUser) => {
       if (authUser) {
         dispatch(
@@ -48,10 +51,13 @@ export default function App() {
         console.log("User is not logged in.");
         
       }
+      
     });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
+ 
 
-  const user = useSelector((state) => state.auth);
+ 
 
   return (<>
     <CssBaseline />

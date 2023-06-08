@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Link } from 'react-router-dom';
-import { Box,Button,Container, Typography} from '@mui/material';
+import { Box,Button,Container} from '@mui/material';
 // import {  } from 'semantic-ui-react';
 
 function Landing() {

@@ -1,16 +1,6 @@
 import { createSlice } from "@reduxjs/toolkit"; 
 
-const todoList=[
-    // {
-    //     name:"yousaf khan",
-    //     email:"yioasdhoijs",
-    //     id:1
-    // },{
-    //     name:"jsnkdn",
-    //     email:"kdskf",
-    //     id:2
-    // }
-]
+
 const todolist=localStorage.getItem('todo')!==null?JSON.parse(localStorage.getItem('todo')):[];
 const todoSlice=createSlice({
     name:"Todo",
@@ -23,7 +13,7 @@ const todoSlice=createSlice({
        },
        deleteTodo:(state,action)=>{
         const {id}=action.payload;
-        const tos=state.find(todo=>todo.id==id);
+        const tos=state.find(todo=>todo.id===id);
         if(tos){
             localStorage.setItem('todo',JSON.stringify(state.filter(f=>f.id!==id)))
             return state.filter(f=>f.id!==id)
@@ -32,7 +22,7 @@ const todoSlice=createSlice({
        },
        updateTodo:(state,action)=>{
              const {id,title,desc,date,cat}=action.payload;
-            const tod=state.find(todo=>todo.id==id);
+            const tod=state.find(todo=>todo.id===id);
             console.log("REDUCER PAGE:: ",id)
             if(tod){
                 tod.title=title;
@@ -44,7 +34,7 @@ const todoSlice=createSlice({
             localStorage.setItem('todo',JSON.stringify(state))   
        },
        markedTodo:(state,action)=>{
-        const {id,title,desc,date,cat,marked}=action.payload;
+        // const {id,title,desc,date,cat,marked}=action.payload;
 
        }
     }
