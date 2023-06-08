@@ -16,7 +16,7 @@ function Landing() {
        <h1 className='text-4xl font-bold pb-5'>TASKIFY</h1>
      <h1 className='text-xl text-slate-600'>We make task <span className='font-bold'>management</span> more engaging and easier to handle.</h1>
      <Box className='pt-10'>
-     <Button  variant="contained" sx={{fontSize:"0.8rem"}}><Link to="/register">Register</Link></Button> or <Button variant='outlined'  sx={{fontSize:"0.8rem"}}><Link to="/login">Login</Link></Button>
+     <Link to="/register"><Button  variant="contained" sx={{fontSize:"0.8rem"}}>Register</Button></Link> or <Link to="/login"><Button variant='outlined'  sx={{fontSize:"0.8rem"}}>Login</Button></Link>
      </Box>
     
 </Box>
