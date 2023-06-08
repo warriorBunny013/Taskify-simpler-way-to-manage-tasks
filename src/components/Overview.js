@@ -16,8 +16,8 @@ const Overview = () => {
          <Container maxWidth="md">
             <Box className="flex justify-between">
             <Box className="border-2 w-60 px-10 py-5">
-                <Typography variant='h5'>Total Task: <span>{countTodos?countTodos:""}</span></Typography>
-                <Box className="pt-5 text-lg text-slate-500">Inprogress: <span className='text-lg font-bold'>{countTodos?countTodos:""}</span></Box>
+                <Typography variant='h5'>Total Task: <span>{countTodos?countTodos:"0"}</span></Typography>
+                <Box className="pt-5 text-lg text-slate-500">Inprogress: <span className='text-lg font-bold'>{countTodos?countTodos:"0"}</span></Box>
                 <Box className=" text-lg text-slate-500">Completed: <span className='text-lg font-bold'>0</span></Box> 
                 <Box className=" text-lg text-slate-500">overdue: <span className='text-lg font-bold'>0</span></Box> 
             </Box>

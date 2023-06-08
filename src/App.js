@@ -73,14 +73,14 @@ export default function App() {
 
          
           <Route exact path="/" element={<Landing/>}/>
-          {user.user && <Route exact path="/dashboard" element={<Overview/>}/>}
-          {user.user && <Route exact path="/dashboard/tasks" element={<> <Header/><Main/></>}/>}
-          {user.user && <Route exact path="/dashboard/tasks/edit/:id" element={<> <Header/><EditCards/></>}/>}
-          {user.user &&<Route exact path="/dashboard/chats" element={<> <Header/><Container maxWidth="md">Chats</Container></>}/>}
-          {user.user && <Route exact path="/dashboard/teams" element={<> <Header/><Container maxWidth="md">Team members</Container></>}/>}
-          <Route exact path="/login" element={<Form/>}/>
-          <Route exact path="/register" element={<Signup/>}/>
-          <Route exact path="/*" element={<h1>PAGE NOT FOUND</h1>}/>
+          {user.user && <Route path="/dashboard" element={<Overview/>}/>}
+          {user.user && <Route path="/dashboard/tasks" element={<> <Header/><Main/></>}/>}
+          {user.user && <Route path="/dashboard/tasks/edit/:id" element={<> <Header/><EditCards/></>}/>}
+          {user.user &&<Route path="/dashboard/chats" element={<> <Header/><Container maxWidth="md">Chats</Container></>}/>}
+          {user.user && <Route  path="/dashboard/teams" element={<> <Header/><Container maxWidth="md">Team members</Container></>}/>}
+          <Route  path="/login" element={<Form/>}/>
+          <Route  path="/register" element={<Signup/>}/>
+          <Route  path="/*" element={<h1>PAGE NOT FOUND</h1>}/>
         
            </Routes>
       </Box>
