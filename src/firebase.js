@@ -1,6 +1,7 @@
 
 import { initializeApp } from "firebase/app";
 import {getAuth} from "firebase/auth"
+import {getFirestore} from 'firebase/firestore'
 
 const firebaseConfig = {
   apiKey: "AIzaSyCs0wTdOz8zvYpkb9u-zBvwpvfaddIOJbY",
@@ -12,4 +13,5 @@ const firebaseConfig = {
 };
 // eslint-disable-next-line
 const app = initializeApp(firebaseConfig);
-export const auth=getAuth();
+export const auth=getAuth(app);
+export const db=getFirestore(app)

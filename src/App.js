@@ -4,7 +4,6 @@ import {CssBaseline,Box,Container} from '@mui/material';
 import Main from './components/Main'
 import Header from './components/Header';
 import {Routes,Route, useNavigate } from 'react-router-dom';
-import EditCards from './components/EditCards';
 import Form from './components/Form'
 import Signup from './components/Signup'
 import { useSelector,useDispatch } from 'react-redux';
@@ -13,6 +12,7 @@ import { auth } from "./firebase";
 import Landing from './components/LandingPage';
 import Overview from './components/Overview';
 import { useEffect } from 'react';
+import GroupChat from './components/GroupChat'
 
 const DrawerHeader = styled('div')(({ theme }) => ({
   display: 'flex',
@@ -75,8 +75,7 @@ export default function App() {
           <Route exact path="/" element={<Landing/>}/>
           {user.user && <Route path="/dashboard" element={<Overview/>}/>}
           {user.user && <Route path="/dashboard/tasks" element={<> <Header/><Main/></>}/>}
-          {user.user && <Route path="/dashboard/tasks/edit/:id" element={<> <Header/><EditCards/></>}/>}
-          {user.user &&<Route path="/dashboard/chats" element={<> <Header/><Container maxWidth="md">Chats</Container></>}/>}
+          {user.user &&<Route path="/dashboard/chats" element={<> <Header/><Container maxWidth="md"><GroupChat/></Container></>}/>}
           {user.user && <Route  path="/dashboard/teams" element={<> <Header/><Container maxWidth="md">Team members</Container></>}/>}
           <Route  path="/login" element={<Form/>}/>
           <Route  path="/register" element={<Signup/>}/>

@@ -62,7 +62,7 @@ function Main() {
     dispatch(addTodo({id:~~(Math.random()*999),title:title,desc:desc,date:date,cat:cat,mark:false}))
     setOpen(false);
   }
-  const countTodos=todo.filter(i=>i).length;
+  // const countTodos=todo.filter(i=>i).length;
   
   // React.useEffect(()=>{
   //   console.log("MY PAGE,",todo) 
@@ -77,7 +77,7 @@ function Main() {
       <TabContext value={value}>
         <Box mb={2} sx={{border:1,zIndex:100,backgroundColor:"#fff",borderRadius: '8px', display:"flex",flexWrap:"wrap-reverse",justifyContent: 'space-between', borderBottom: 1, borderColor: 'divider' }}>
           <TabList onChange={handleChange} aria-label="lab API tabs example">
-            <Tab label={`Total-${countNotCompleted}`} value="1" />
+            <Tab label={`InProgress-${countNotCompleted}`} value="1" />
             {/* <Tab label="In Progress" value="2" /> */}
             <Tab label={`Completed-${countCompleted}`} value="3" />
 
