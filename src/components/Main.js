@@ -77,7 +77,7 @@ function Main() {
       <TabContext value={value}>
         <Box mb={2} sx={{border:1,zIndex:100,backgroundColor:"#fff",borderRadius: '8px', display:"flex",flexWrap:"wrap-reverse",justifyContent: 'space-between', borderBottom: 1, borderColor: 'divider' }}>
           <TabList onChange={handleChange} aria-label="lab API tabs example">
-            <Tab label={`InProgress-${countNotCompleted}`} value="1" />
+            <Tab label={`In Progress-${countNotCompleted}`} value="1" />
             {/* <Tab label="In Progress" value="2" /> */}
             <Tab label={`Completed-${countCompleted}`} value="3" />
 
