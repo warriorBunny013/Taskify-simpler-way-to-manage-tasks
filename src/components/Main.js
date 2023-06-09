@@ -84,13 +84,6 @@ function Main() {
           </TabList>
           <Button variant="contained"  onClick={handleOpen}><AddIcon/>Add Task</Button>
         </Box>
-      {/* contents here */}
-      {/* {todo.map((t,index)=>{
-         return <TabPanel value="1"> <Cards  sx={{marginBottom:"2rem"}} key={index}  tid={t.id} ttitle={t.title} tdesc={t.desc} tdate={t.date} tcat={t.cat}/></TabPanel>
-    
-      
-    }
-      )} */}
       {
         todo.map((t,index)=>{
           if(t.mark===false){
@@ -100,7 +93,6 @@ function Main() {
           }
         })
       }
-      <TabPanel value="3"> completed task</TabPanel>
       
      
         
