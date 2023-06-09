@@ -178,9 +178,16 @@ const Cards = ({tmark,tid,ttitle,tdesc,tdate,tcat}) => {
               </List>
             </Box>
             <Divider/>
-            <Box className="flex flex-stretch pb-5" component="form" onSubmit={handleSubmitChat}>
-              <TextField sx={{width:"100vh"}} value={newMssg} onChange={(e)=>setNewMssg(e.target.value)} variant='outlined'/>
-              <Button  type="submit" variant="contained">Send</Button>
+            <Box className='mt-5 flex ' component="form" onSubmit={handleSubmitChat}>
+              <TextField 
+          id="filled-size-small"
+          variant="outlined"
+          defaultValue="Small"
+          size="small" multiline  label="Type your message here.." fullWidth="true" value={newMssg} onChange={(e)=>setNewMssg(e.target.value)}/>
+          <Box>
+          <Button  type="submit" variant="contained">Send</Button>
+          </Box>
+              
             </Box>
         </Container>
         </AccordionDetails>
