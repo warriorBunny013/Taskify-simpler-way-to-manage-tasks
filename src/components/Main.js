@@ -34,6 +34,7 @@ function Main() {
   const [desc,setDesc]=React.useState('');
   const [date,setDate]=React.useState((new Date()).toString());
   const [cat,setCat]=React.useState('');
+  
 
   // const handleDateChange=(e)=>{
    
@@ -56,17 +57,18 @@ function Main() {
 
   const dispatch=useDispatch();
   const todo=useSelector((state)=>state.todo);
-  // console.log(users)
-  // const navigate=useNavigate();
+
   const handleSubmit=(event)=>{
-    dispatch(addTodo({id:~~(Math.random()*999),title:title,desc:desc,date:date,cat:cat}))
+    dispatch(addTodo({id:~~(Math.random()*999),title:title,desc:desc,date:date,cat:cat,mark:false}))
     setOpen(false);
   }
   const countTodos=todo.filter(i=>i).length;
-
-  // const [mark,setMark]=React.useState(false);
-  const ismarked=useSelector((state)=>state.todo);
-  console.log("MARKED OR NOT::",ismarked)
+  
+  // React.useEffect(()=>{
+  //   console.log("MY PAGE,",todo) 
+  // },)
+  const countCompleted=todo.filter(i=>i.mark===true).length
+  const countNotCompleted=todo.filter(i=>i.mark===false).length
   return (
     <>
          <Container maxWidth="md">
@@ -75,20 +77,29 @@ function Main() {
       <TabContext value={value}>
         <Box mb={2} sx={{border:1,zIndex:100,backgroundColor:"#fff",borderRadius: '8px', display:"flex",flexWrap:"wrap-reverse",justifyContent: 'space-between', borderBottom: 1, borderColor: 'divider' }}>
           <TabList onChange={handleChange} aria-label="lab API tabs example">
-            <Tab label={`Total-${countTodos}`} value="1" />
+            <Tab label={`Total-${countNotCompleted}`} value="1" />
             {/* <Tab label="In Progress" value="2" /> */}
-            <Tab label="Completed" value="3" />
+            <Tab label={`Completed-${countCompleted}`} value="3" />
 
           </TabList>
           <Button variant="contained"  onClick={handleOpen}><AddIcon/>Add Task</Button>
         </Box>
       {/* contents here */}
-      {todo.map((t,index)=>{
-         return <TabPanel value="1"> <Cards  sx={{marginBottom:"2rem"}} key={index} tid={t.id} ttitle={t.title} tdesc={t.desc} tdate={t.date} tcat={t.cat}/></TabPanel>
+      {/* {todo.map((t,index)=>{
+         return <TabPanel value="1"> <Cards  sx={{marginBottom:"2rem"}} key={index}  tid={t.id} ttitle={t.title} tdesc={t.desc} tdate={t.date} tcat={t.cat}/></TabPanel>
     
       
     }
-      )}
+      )} */}
+      {
+        todo.map((t,index)=>{
+          if(t.mark===false){
+            return <TabPanel value="1"> <Cards  sx={{marginBottom:"2rem"}} key={index} tmark={t.mark}  tid={t.id} ttitle={t.title} tdesc={t.desc} tdate={t.date} tcat={t.cat}/></TabPanel>
+          }else{
+            return <TabPanel value="3"> <Cards  sx={{marginBottom:"2rem"}} key={index} tmark={t.mark}  tid={t.id} ttitle={t.title} tdesc={t.desc} tdate={t.date} tcat={t.cat}/></TabPanel>
+          }
+        })
+      }
       <TabPanel value="3"> completed task</TabPanel>
       
      

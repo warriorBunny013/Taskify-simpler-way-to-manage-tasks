@@ -8,7 +8,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import EditIcon from '@mui/icons-material/Edit';
 import { useSelector } from 'react-redux';
 import { useDispatch} from 'react-redux';
-import { deleteTodo,updateTodo } from '../Reducers/todoReducer';
+import { addTodo,deleteTodo,updateTodo,markedTodo} from '../Reducers/todoReducer';
 import Modal from '@mui/material/Modal';
 const style = {
   position: 'absolute',
@@ -22,10 +22,11 @@ const style = {
   p: 4,
 };
 
-const Cards = ({tid,ttitle,tdesc,tdate,tcat}) => {
+const Cards = ({tmark,tid,ttitle,tdesc,tdate,tcat}) => {
   // const users=useSelector((state)=>state.users);
   // console.log('CARD WALA CONSOLELOG'+users);
   // const [edit,setEdit]=React.useState(false);
+  const [marked,setMarked]=React.useState(tmark)
   const [open, setOpen] = React.useState(false);
   // const handleOpen = () => setOpen(true);
   const handleClose = () => setOpen(false);
@@ -38,6 +39,15 @@ const Cards = ({tid,ttitle,tdesc,tdate,tcat}) => {
   const handleDelete=(tid)=>{
     console.log("DELETE:: ",tid)
     dispatch(deleteTodo({id:tid}));
+  }
+
+  const handleMarked=(tid)=>{
+
+    setMarked(!marked)
+    console.log("MARKED AS COMPLETED:",tid,",",marked)
+    dispatch(markedTodo({id:tid,mark:marked}))
+    // dispatch(addTodo({id:tid,title:ttitle,desc:tdesc,date:tdate,cat:tcat,mark:true}))
+    
   }
   
 
@@ -56,7 +66,6 @@ const Cards = ({tid,ttitle,tdesc,tdate,tcat}) => {
   const [newdesc,setNewDesc]=React.useState(desc);
   const [newdate,setNewDate]=React.useState(date);
   const [newcat,setNewCat]=React.useState(cat);
-  const [completed,setCompleted]=React.useState('');
   const handleEdit=(id)=>{
     console.log("Edited:: ",newtitle)
     
@@ -71,10 +80,7 @@ const Cards = ({tid,ttitle,tdesc,tdate,tcat}) => {
    
   }
   
-  const handleMark=()=>{
-    setCompleted(!completed);
-    console.log("CARDS PAGE::",completed)
-  }
+
   
   return (<>
         
@@ -111,7 +117,7 @@ const Cards = ({tid,ttitle,tdesc,tdate,tcat}) => {
 
             </Typography>
             <Box sx={{display:"flex",flexWrap:"wrap",justifyContent:"flex-end",gap:"1rem"}}>
-              <Button sx={{fontSize:"10px",color:"sucess"}} onClick={handleMark} variant="outlined">Mark as Done</Button>
+              <Button sx={{fontSize:"10px",color:"sucess"}} onClick={()=>handleMarked(tid)} variant="outlined">Mark as {tmark?"unDone":"Done"}</Button>
               <Typography> {new Date().toISOString()}</Typography>
               </Box>
         </CardContent>

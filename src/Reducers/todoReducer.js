@@ -34,10 +34,18 @@ const todoSlice=createSlice({
             localStorage.setItem('todo',JSON.stringify(state))   
        },
        markedTodo:(state,action)=>{
-        // const {id,title,desc,date,cat,marked}=action.payload;
+        const {id,mark}=action.payload;
+        const tod=state.find(todo=>todo.id===id);
+        if(tod){
+            tod.mark=!mark;
 
+        }
+    //    state.map(todo =>(todo.id === id)  ? {...todo, mark: !mark}: todo)
+
+        console.log(action)
+        localStorage.setItem('todo',JSON.stringify(state))
        }
     }
 })
-export const {addTodo,deleteTodo,updateTodo}=todoSlice.actions;
+export const {addTodo,deleteTodo,updateTodo, markedTodo}=todoSlice.actions;
 export default todoSlice.reducer;
